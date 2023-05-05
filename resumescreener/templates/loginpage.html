@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    
+</head>
+<body>
+    <style>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        html, body {
+            display: flex;
+            justify-content: center;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 15px;
+            }
+            form {
+            border: 5px solid #ccc;
+            }
+            input[type=text], input[type=password] {
+            width: 100%;
+            padding: 16px 8px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            }
+            button {
+            background-color: #8ebf42;
+            color: black;
+            padding: 14px 0;
+            margin: 10px 0;
+            border: none;
+            cursor: grabbing;
+            width: 100%;
+            border-radius: 12px;
+            }
+            h1 {
+            text-align:center;
+            font-size:18;
+            color: #8ebf42
+            
+            }
+            button:hover {
+            opacity: 0.8;
+            }
+            .formcontainer {
+            text-align: left;
+            margin: 24px 50px 12px;
+            }
+            .container {
+            padding: 16px 0;
+            text-align:left;
+            }
+            span.psw {
+            float: right;
+            padding-top: 0;
+            padding-right: 15px;
+            }
+            /* Change styles for span on extra small screens */
+            @media screen and (max-width: 300px) 
+            span.psw {
+            display: block;
+            float: none;
+            }
+            .error {
+                color: red;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+    </style>
+    <center><h1>Login Form</h1></center>
+    <form action="{% url 'loginaction' %}" method="post">
+        {% csrf_token %}
+        {% load static %}
+        <center>
+            <div class="container">
+                <label for="EmployerEmailID"><b>EmployerEmailID: </b></label>
+                <input type="text" placeholder="Enter EmployerEmailID" name="EmployerEmailID" required><br>  
+                <label for="AccountPassword"><b>Account Password: </b></label>
+                <input type="password" placeholder="Enter Account Password" name="AccountPassword" required><br>  
+                <button type="submit"><b>Login</b></button><br>
+                {% if message %}
+                    <div class="error">{{ message }}</div>
+                {% endif %}     
+                Don't have an account? <a href="{% url 'Employersignup' %}">Register</a>
+            </div>
+        </center>
+    </form>
+</body>
+</html>

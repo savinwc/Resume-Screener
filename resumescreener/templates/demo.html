@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  
+    body {
+      background-color: #92d35e;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 100%; /* Change the width to 100% */
+        border-radius: 5px;
+        margin-bottom: 20px; /* Add margin bottom to create space between cards */
+        background-color: #f7f7f7;
+      }
+      
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+      
+      img {
+        border-radius: 5px 5px 0 0;
+        width: 100%; /* Set the width of the image to 100% */
+      }
+      
+      .container {
+        padding: 2px 16px;
+      }
+      .button {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    
+    .button:hover {
+        background-color: #3e8e41;
+    }
+    
+    .center {
+      text-align: center;
+    }
+      
+</style>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Elex"
+  chat-icon="https://cdn-icons-png.flaticon.com/512/8943/8943377.png"
+  agent-id="d701e885-74d3-40d0-b9eb-124cbc826c3f"
+  language-code="en"
+></df-messenger>
+</head>
+<body>
+
+    <div class="center">
+        <h2>Results</h2>
+        <br>
+        <br>
+
+        <div>
+          <div class="card">
+            <div class="container">
+              <h4><b>Your query:</b></h4> 
+              <p>{{job_description}}</p> 
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="container">
+              <h4><b>Best resume:</b></h4> 
+              <p>{{best_resume}}</p> 
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="container">
+              <h4><b>Similarity Score:</b></h4> 
+
+              <style>
+                table {
+                  border-collapse: collapse;
+                  width: 100%;
+                }
+              
+                th, td {
+                  text-align: left;
+                  padding: 8px;
+                  border: 1px solid #ddd;
+                }
+              
+                th {
+                  background-color: #f2f2f2;
+                }
+              </style>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Resume ID</th>
+                    <th>File path</th>
+                    <th>Match score</th>
+                    <th>Summary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for resume in best_similarity_score %}
+                    <tr>
+                      <td>{{ resume.0 }}</td>
+                      <td><a href="{% url 'pdf_view' file_path=resume.1 %}" target="_blank">{{ resume.1 }}</a></td>
+
+                      <td>{{ resume.2 }}</td>
+                      <td>{{ resume.3 }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              
+ 
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            {% comment %} <div class="container">
+              <h4><b>Best Resume</b></h4> 
+              <p>{{ranked_resumes}}</p> 
+            </div> {% endcomment %}
+          </div>
+        </div>
+
+        <div>
+            <a href="/" class="button">Logout</a>
+            <a href="{% url 'search'%}" class="button">Search Another Query</a>
+        </div>
+    </div>
+
+</body>
+</html> 

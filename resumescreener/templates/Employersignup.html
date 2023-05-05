@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Signup</title>
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles1.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="#" method="post">
+            {% csrf_token %}
+            {% load static %}
+            
+            <div class="banner">
+                <h1>Employer Verification Form</h1>
+              </div>
+              <p>Please fill out with the information that is requested below and submit the employment verification form. Thank you!</p>
+              <hr/>
+              <fieldset>
+                <legend>Company Information</legend>
+            
+            <div class="inputBox">
+                <label for="CompanyName">Company Name<span class="required">*</span></label>
+          <input id="CompanyName" type="text"  name='CompanyName'required/>
+            </div>
+
+            <div class="inputBox">
+                <label for="CompanyAddress">Company Address<span class="required">*</span></label>
+                <input type="text" id="CompanyAddress" name='CompanyAddress' placeholder="Full Address" />
+            </div>
+
+            <div class="inputBox">
+                <label for="PositionRequired">Position Required<span class="required">*</span></label>
+                <input type="text" id="PositionRequired" name='PositionRequired' placeholder="Position Required" />
+            </div>
+            <hr/>
+            <hr/>
+            <fieldset>
+                <legend>Employer Information</legend>
+
+                <div class="inputBox">
+                <label for="EmployerName">Employer Name<span class="required">*</span></label>
+                <input id="EmployerName" type="text" name="EmployerName" placeholder="Full Name" required/>
+                </div>
+            
+                <div class="inputBox">
+                <label for="EmployerDOB">Employer_DOB<span class="required">*</span></label>
+                <input id="EmployerDOB" type="text" name="EmployerDOB" placeholder="DD/MM/YYYY" required/>
+                </div>
+
+                <div class="inputBox">
+                <label for="EmployerEmail_ID">Employer_Email_ID<span class="required">*</span></label>
+                <input id="EmployerEmail_ID" type="text" name="EmployerEmailID" placeholder="janedoe@email.com" required/>
+                </div>
+
+                <div class="inputBox">
+                <label for="EmployerPosition">Employer_Position<span class="required">*</span></label>
+                <input id="EmployerPosition" type="text" name="EmployerPosition"  required/>
+                </div>
+
+                <div class="inputBox">
+                <label for="AccountPassword">Account Password<span class="required">*</span></label>
+                <input id="AccountPassword" type="text" name="AccountPassword"  required/>
+                </div> 
+
+
+
+           
+            </fieldset>
+            <button type="submit"><b>Signup</b></button><br>   
+       
+        </form>
+        
+    </div>
+
+    
+   
+    
+
+
+</body>
+
+</html>

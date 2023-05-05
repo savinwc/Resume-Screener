@@ -1,0 +1,47 @@
+--1
+The code defines two functions: preprocess_text and screen_resume.
+
+--2
+preprocess_text preprocesses a text string by tokenizing it and removing stop words.
+
+--3
+screen_resume takes a resume PDF path and a job description string as inputs, preprocesses them, 
+vectorizes the preprocessed text, and computes their cosine similarity score.
+
+--4
+The find_best_resume function takes a directory path and a job description string as inputs, 
+loops through each resume PDF file in the directory, 
+and calls screen_resume to find the resume with the highest cosine similarity score.
+
+--5
+The main part of the code specifies a job_description and a directory_path, calls find_best_resume, 
+and prints the path to the best matching resume and its similarity score
+
+--6
+Cosine similarity:
+Identifying the similarity between pairs of a document is a good use case for the utilization of cosine similarity,
+as a quantification of the measurement of similarity between two objects.
+Quantification of the similarity between two documents can be obtained by converting the words or phrases,
+into a vectorized form of representation.
+The vector representations of the documents can then be used within the cosine similarity formula,
+to obtain a quantification of similarity.
+In the scenario described above, the cosine similarity of 1 implies that the two documents are exactly alike. 
+A cosine similarity of 0 would conclude that there are no similarities between the two documents.
+
+cos(θ)=(A.B)/||A||.||B||
+
+--7
+The function then uses the TfidfVectorizer from the sklearn library to convert the preprocessed text into numerical vectors. 
+The fit_transform method of the vectorizer is called on a list containing the preprocessed resume and job description, 
+which creates a sparse matrix of numerical vectors representing the text.
+
+--8
+A sparse matrix is a matrix that has a large number of zero entries. 
+This is particularly useful when working with numerical vectors representing text data, 
+where most entries will be zero since any given document will only contain a small fraction of the total vocabulary.
+To represent text as numerical vectors, one common approach is to use the bag-of-words model. 
+This model represents each document as a vector of word frequencies,
+where the entries correspond to the frequency of each word in the vocabulary. 
+However, since most documents only contain a small fraction of the vocabulary, the resulting matrix will be sparse.
+To create a sparse matrix of numerical vectors representing text, you can use a library such as Scikit-learn in Python. 
+The library provides tools for preprocessing text data and creating sparse matrices. 

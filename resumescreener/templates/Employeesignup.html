@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith-Employee Signup</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles1.css">
+</head>
+
+<body>
+    <div class="container">
+      <form action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% load static %}
+            <div class="banner">
+                <h1>Create an Account (it's free)
+                  <br>
+                  <br>
+                  It only takes a couple of minutes to get started</h1>
+              </div>
+              <p class="top-info">Thank you for your interest in working with us. Please check below for available job opportunities that meet your criteria and send your application by filling out the Job Application Form.</p>
+            <div class="alert">Your Account has been created</div>
+
+            <div class="inputBox">
+                <label for="EmployeeName"> Name<span class="required">*</span></label>
+                <input id="EmployeeName" type="text" name="EmployeeName" placeholder="Full Name" required/>
+                </div>
+      
+                <div class="inputBox">
+                  <label for="EmployeeEmailID"> Email_ID<span class="required">*</span></label>
+                  <input id="EmployeeEmailID" type="text" name="EmployeeEmailID"  placeholder="johndoe@email.com"required/>
+                
+                  <div class="inputBox">
+                    <label for="EmployeePhoneNO">Contact Number<span class="required">*</span></label>
+                    <input id="EmployeePhoneNO" type="text" name="EmployeePhoneNO" placeholder="10 digit mobile number"  required/>
+                  
+                    <div class="inputBox">
+                      <label for="EmployeePosition">What position are you applying for?<span class="required">*</span></label>
+                      <input id="EmployeePosition" type="text" name="EmployeePosition"  required/>
+      
+                      <div class="inputBox">
+                        <label for="EmployeeStartDate">Available start date<span class="required">*</span></label>
+                        <input id="EmployeeStartDate" type="text" name="EmployeeStartDate" placeholder="DD/MM/YYYY" required/>
+      
+                        <div class="inputBox">
+                          <label for="CurrentEmployeeStatus">What is your current employment status?<span class="required">*</span></label>
+                          <input id="CurrentEmployeeStatus" type="text" name="CurrentEmployeeStatus" placeholder="Employed/Self-Employed/Unemployed/Student" required/>
+
+                          <div class="inputBox">
+                            <label for="Password">Account Password<span class="required">*</span></label>
+                            <input id="Password" type="text" name="Password"  required/>
+                            </div>
+
+                            <p>Submit your resume by providing your resume URL or attach resume(.pdf):</p>
+                            <div class="item">
+                            <input type="file" id="resume" name="resume" accept=".pdf" required />
+                            </div>
+
+
+                          <button type="submit"><b>Signup</b></button><br>
+
+                          
+                          
+
+                          
+
+                        
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>

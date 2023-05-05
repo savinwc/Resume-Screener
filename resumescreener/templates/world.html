@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Employee Details</title>
+		<style>
+			body {
+				background-image: url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8b2ZmaWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				text-align: center;
+			  }
+			table {
+				border-collapse: collapse;
+				background-color: white;
+			}
+			
+			th, td {
+				border: 1px solid black;
+				padding: 5px;
+			}
+			.button-wrapper {
+				display: flex;
+				justify-content: center;
+				margin-top: 300px;
+			  }
+			  
+			  .button {
+				display: inline-block;
+				padding: 8px 16px;
+				background-color: #4CAF50;
+				color: #fff;
+				text-align: center;
+				text-decoration: none;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				margin: 0 10px;
+			  }
+			  
+			  .button:hover {
+				background-color: #3e8e41;
+			  }
+		</style>
+	</head>
+	<body>
+		<div style="background-color: #3e8e41; border-radius: 10px; padding: 20px; width: 50%; margin: auto;">
+			<h1 style="color: #FFFFFF;">Welcome {{EmployeeName}}</h1>
+		</div>
+		
+		<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Elex"
+  chat-icon="https://cdn-icons-png.flaticon.com/512/8943/8943377.png"
+  agent-id="d701e885-74d3-40d0-b9eb-124cbc826c3f"
+  language-code="en"
+></df-messenger>
+		<div class="button-wrapper">
+			<button class="button" onclick="toggleDetails()">Show Details</button>
+			<button class="button" onclick="toggleResume()">Show Resume</button>
+			<button class="button" onclick="toggleCompanies()">Show Companies</button>
+			<button class="button" onclick="{% url 'index'%}">Logout</button>
+		  </div>
+		
+		<table id="details" style="display:none;">
+			<tr>
+				<th>Attribute</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td>Employee Name:</td>
+				<td>{{ EmployeeName }}</td>
+			</tr>
+			<tr>
+				<td>Employee Email ID:</td>
+				<td>{{ EmployeeEmailID }}</td>
+			</tr>
+			<tr>
+				<td>Employee Phone No:</td>
+				<td>{{ EmployeePhoneNO }}</td>
+			</tr>
+			<tr>
+				<td>Employee Position:</td>
+				<td>{{ EmployeePosition }}</td>
+			</tr>
+			<tr>
+				<td>Employee Start Date:</td>
+				<td>{{ EmployeeStartDate }}</td>
+			</tr>
+			<tr>
+				<td>Current Employee Status:</td>
+				<td>{{ CurrentEmployeeStatus }}</td>
+			</tr>
+		</table>
+		
+		<iframe id="resume" style="display:none;" src="data:application/pdf;base64,{{ resume_base64 }}" type="application/pdf" width="100%" height="600px"></iframe>
+		<table id="companies" style="display:none;">
+			<tr>
+				<th>Barclyas</th>
+				<th>Mumbai,Maharashtra</th>
+				<th>Python Developer, ML Engineer</th>
+			</tr>
+			<tr>
+				<td>J.P Morgan</td>
+				<td>Goregaon West, Mumbai, Maharashtra 400047</td>
+				<td>Java Developer, Web Developer</td>
+			</tr>
+			<tr>
+				<td>Rodricks.Inc</td>
+				<td>Pune,Maharastra</td>
+				<td>Web Developer, UI/UX designer</td>
+			</tr>
+			<tr>
+				<td>Naik Companies</td>
+				<td>Bhayandar,Maharashtra</td>
+				<td>Accountant, ML Engineer</td>
+			</tr>
+			<tr>
+				<td>Tesla </td>
+				<td>Pune,Maharastra</td>
+				<td>AI Engineer, Data Scientist</td>
+			</tr>
+		</table>
+		<script>
+			function toggleDetails() {
+				var details = document.getElementById("details");
+				if (details.style.display === "none") {
+					details.style.display = "block";
+					document.getElementsByTagName("button")[0].innerHTML = "Hide Details";
+				} else {
+					details.style.display = "none";
+					document.getElementsByTagName("button")[0].innerHTML = "Show Details";
+				}
+			}
+			function toggleResume() {
+				var resume = document.getElementById("resume");
+				if (resume.style.display === "none") {
+					resume.style.display = "block";
+					document.getElementsByTagName("button")[1].innerHTML = "Hide Resume";
+				} else {
+					resume.style.display = "none";
+					document.getElementsByTagName("button")[1].innerHTML = "Show Resume";
+				}
+			}
+			function toggleCompanies() {
+				var companies = document.getElementById("companies");
+				if (companies.style.display === "none") {
+					companies.style.display = "block";
+					document.getElementsByTagName("button")[2].innerHTML = "Hide Companies";
+				} else {
+					companies.style.display = "none";
+					document.getElementsByTagName("button")[2].innerHTML = "Show Companies";
+				}
+			}
+		</script>
+	</body>
+</html>
