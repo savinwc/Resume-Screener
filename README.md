@@ -3,7 +3,7 @@
 # About
 This application analyzes resumes and detects important features such as relevant skills, work experience, education, and achievements.
 It then compares the resumes against the job description using cosine similarity and vectorization techniques, to identify the closest match 
-between the requirements of the job and the candidate's qualifications.
+between the requirements of the job and the candidate's qualifications
 
 With our resume screener, recruiters and hiring managers can save time and resources by quickly identifying the best candidates for a particular job, 
 while also ensuring a fair and unbiased hiring process.
